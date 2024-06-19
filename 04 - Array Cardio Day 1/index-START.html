@@ -95,19 +95,54 @@
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+    // class mw-category-group
+    //get all the a children
+    //turn to to array first
+    //get all their textcontent and put into new array using map
+    //split the textContent, then search for de
+
+    /*
+    let allBoulevards = document.querySelectorAll(".mw-category-group a");//get all a elements in the class mw...
+    const boulevardsArr = Array.from(allBoulevards);//turn it to array
+    const mappedBoulArr = boulevardsArr.map((boulevard)=> {return boulevard.textContent})//now we have an array of only textContent
+    const result = mappedBoulArr.filter((boul)=> boul.includes("de"))
+    console.table(result);//good fucking shit
+    */
+    
 
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
 
-  
+    //split the array to first and last, and make a new entry per person
+    //where going to search the last name by alphabetical order
+    const alpha = people.sort((lastOne, nextOne)=>{
+      const [aLast, aFirst] = lastOne.split(", ");
+      const [bLast, bFirst] = nextOne.split(", ");
+      return aLast > bLast ? 1 : -1;
 
+
+    });
+
+    console.table(alpha);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+    const transportation = data.reduce((obj, item)=>{
+      if(!obj[item]){
+        obj[item] = 0;
+      }
+      obj[item]++;
+      return obj;
+
+    },{//didnt know you could use an object as the initial
+      car: 0,
+      walk: 0,
+      truck: 0,
+    })
   </script>
 </body>
 </html>
